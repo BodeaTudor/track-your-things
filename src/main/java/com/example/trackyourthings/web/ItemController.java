@@ -4,6 +4,8 @@ import com.example.trackyourthings.domain.Item;
 import com.example.trackyourthings.service.ItemService;
 import com.example.trackyourthings.transfer.CreateItemRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,5 +30,13 @@ public class ItemController {
         Item createdItem = itemService.createItem(request);
 
         return new ResponseEntity<>(createdItem, HttpStatus.CREATED);
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<Item>> getItems(Pageable pageable) {
+
+        Page<Item> items = itemService.getItems(pageable);
+
+        return new ResponseEntity<>(items, HttpStatus.OK);
     }
 }
