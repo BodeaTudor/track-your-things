@@ -39,4 +39,11 @@ public class ItemService {
 
         return itemRepository.findAll(pageable);
     }
+
+    public void deleteItem(long id) {
+
+        LOGGER.info("Deleting item with id: {}", id);
+
+        itemRepository.deleteById(id);
+    }
 }
