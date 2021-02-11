@@ -39,4 +39,12 @@ public class ItemController {
 
         return new ResponseEntity<>(items, HttpStatus.OK);
     }
+
+    @DeleteMapping
+    public ResponseEntity deleteItem(long id) {
+
+        itemService.deleteItem(id);
+
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
 }
