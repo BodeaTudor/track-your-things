@@ -19,7 +19,7 @@ public class Item {
     @NotNull
     private String place;
     private String fromWho;
-    private LocalDateTime date;
+    private LocalDateTime dateTime;
 
     public long getId() {
         return id;
@@ -27,6 +27,14 @@ public class Item {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getTypes() {
+        return types;
+    }
+
+    public void setTypes(String types) {
+        this.types = types;
     }
 
     public String getName() {
@@ -45,22 +53,6 @@ public class Item {
         this.place = place;
     }
 
-    public String getFrom() {
-        return fromWho;
-    }
-
-    public void setFrom(String from) {
-        this.fromWho = from;
-    }
-
-    public String getTypes() {
-        return types;
-    }
-
-    public void setTypes(String types) {
-        this.types = types;
-    }
-
     public String getFromWho() {
         return fromWho;
     }
@@ -69,12 +61,12 @@ public class Item {
         this.fromWho = fromWho;
     }
 
-    public LocalDateTime getDate() {
-        return date;
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 
     @Override
@@ -85,7 +77,9 @@ public class Item {
                 ", name='" + name + '\'' +
                 ", place='" + place + '\'' +
                 ", fromWho='" + fromWho + '\'' +
-                ", date=" + date +
+                ", dateTime=" + dateTime +
                 '}';
     }
 }
+
+
