@@ -1,8 +1,10 @@
 package com.example.trackyourthings.service;
 
 import com.example.trackyourthings.domain.Item;
+import com.example.trackyourthings.exceptions.ResourceNotFoundException;
 import com.example.trackyourthings.persistence.ItemRepository;
 import com.example.trackyourthings.transfer.CreateItemRequest;
+import com.example.trackyourthings.transfer.UpdateItemTypeFieldRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -38,6 +40,23 @@ public class ItemService {
         LOGGER.info("Retrieving items...");
 
         return itemRepository.findAll(pageable);
+    }
+
+    public Item getItem(long id) {
+
+        LOGGER.info("Retrieving item with id: {}", id);
+
+        return itemRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Product " + id + " not found."));
+    }
+
+    public Item updateTypeField(long id, UpdateItemTypeFieldRequest request) {
+
+        LOGGER.info("Updating item's type field. Item id {}, {}", id, request);
+
+        Item item = getItem(id);
+        BeanUtils.copyProperties(request, item);
+
+        return itemRepository.save(item);
     }
 
     public void deleteItem(long id) {
