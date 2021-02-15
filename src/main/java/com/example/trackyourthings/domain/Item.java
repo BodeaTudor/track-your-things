@@ -13,7 +13,7 @@ public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String types;
+    private String category;
     @NotNull
     private String name;
     @NotNull
@@ -29,12 +29,12 @@ public class Item {
         this.id = id;
     }
 
-    public String getTypes() {
-        return types;
+    public String getCategory() {
+        return category;
     }
 
-    public void setTypes(String types) {
-        this.types = types;
+    public void setCategory(String types) {
+        this.category = types;
     }
 
     public String getName() {
@@ -73,7 +73,7 @@ public class Item {
     public String toString() {
         return "Item{" +
                 "id=" + id +
-                ", types='" + types + '\'' +
+                ", types='" + category + '\'' +
                 ", name='" + name + '\'' +
                 ", place='" + place + '\'' +
                 ", fromWho='" + fromWho + '\'' +
