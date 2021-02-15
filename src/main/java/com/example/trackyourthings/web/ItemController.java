@@ -3,6 +3,7 @@ package com.example.trackyourthings.web;
 import com.example.trackyourthings.domain.Item;
 import com.example.trackyourthings.service.ItemService;
 import com.example.trackyourthings.transfer.CreateItemRequest;
+import com.example.trackyourthings.transfer.UpdateItemTypeFieldRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -38,6 +39,14 @@ public class ItemController {
         Page<Item> items = itemService.getItems(pageable);
 
         return new ResponseEntity<>(items, HttpStatus.OK);
+    }
+
+    @PutMapping
+    public ResponseEntity<Item> updateTypeField(long id, @RequestBody UpdateItemTypeFieldRequest request) {
+
+        Item item = itemService.updateTypeField(id, request);
+
+        return new ResponseEntity<>(item, HttpStatus.OK);
     }
 
     @DeleteMapping
